@@ -3,7 +3,7 @@
 void DrawGrid() {
 	glClearColor(0, 0, 0, 255);
 	glClear(GL_COLOR_BUFFER_BIT);
-	glColor3ub(255, 255, 255);
+	glColor3ub(128, 128, 128);
 	glLineWidth(1);
 	glBegin(GL_LINES);
 	for (int x = 0; x < COLUMNS; x++)
@@ -21,9 +21,9 @@ void DrawGrid() {
 	{
 		for (int y = 0; y < ROWS; y++)
 		{
-			if (x == 0 || x == ROWS - 1 || y == 0 || y == ROWS - 1)
+			if (x == 0 || x == COLUMNS - 1 || y == 0 || y == ROWS - 1)
 			{
-				glColor3ub(255, 0, 255);
+				glColor3ub(102, 102, 102);
 				glRectd(x, y, x + 1, y + 1);
 			}
 		}
@@ -165,7 +165,7 @@ int main(int argc, char** argv)
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE);
 	glutInitWindowPosition(100, 100);
-	glutInitWindowSize(600, 600);
+	glutInitWindowSize(COLUMNS*SQUARE_AREA, ROWS*SQUARE_AREA);
 	glutCreateWindow("GameSnake");
 	glutDisplayFunc(display_callback);
 	glutReshapeFunc(reshape_callback);

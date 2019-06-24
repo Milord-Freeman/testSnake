@@ -8,7 +8,8 @@
 
 
 #define COLUMNS 60 
-#define ROWS 60
+#define ROWS 40
+#define SQUARE_AREA 10
 
 #define UP 101
 #define DOWN 103
