@@ -23,21 +23,9 @@
     <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="snake.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="coordinates.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
-      <Filter>Исходные файлы\Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="snake.h">
-      <Filter>Исходные файлы\Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="coordinates.h">
       <Filter>Исходные файлы\Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

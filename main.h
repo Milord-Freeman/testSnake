@@ -2,36 +2,35 @@
 #include <ctime>
 #include <stdlib.h>
 #include <string>
-#include "coordinates.h"
 //#include <vector>
 //#include <iostream>
 //#include <locale>
 
 
-#define COLUMNS 50 
-#define ROWS 30
-#define SQUARE_AREA 15
+#define COLUMNS 60 
+#define ROWS 40
+#define SQUARE_AREA 10
 
 #define UP 101
 #define DOWN 103
 #define LEFT 100
 #define RIGHT 102
 
-//struct Coordinates
-//{
-//	int x, y;
-//};
-//const bool operator==(const Coordinates& left, Coordinates& right) {
-//	return (left.x == right.x && left.y == right.y);
-//}
+struct Coordinates
+{
+	int x, y;
+};
+const bool operator==(const Coordinates& left, Coordinates& right) {
+	if (left.x == right.x && left.y == right.y) return true; else return false;
+}
 
 short Dir = RIGHT;
 bool DirChanged = false;
-coordinates Position[COLUMNS * ROWS] = { {1,1}, {1,2}, {1,3}, {1,4} };
+Coordinates Position[COLUMNS * ROWS] = { {20,25}, {20,24}, {20,23}, {20,22} };
 int SnakeLength = 4;
 
 bool food = true;
-coordinates foodXY;
+Coordinates foodXY;
 int FPS = 100;
 bool GameOver = false;
 
