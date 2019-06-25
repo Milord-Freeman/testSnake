@@ -1,4 +1,4 @@
-#include "FreeGLUT\include\GL\glut.h"
+﻿#include "FreeGLUT\include\GL\glut.h"
 #include <ctime>
 #include <stdlib.h>
 #include <string>

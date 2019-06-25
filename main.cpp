@@ -1,4 +1,4 @@
-#include "main.h"
+п»ї#include "main.h"
 
 void DrawGrid() {
 	glClearColor(0, 0, 0, 255);
@@ -42,9 +42,9 @@ void DrawFood()
 
 void DrawSnake()
 {
-	//Подготавливаем переменные для определения следующего шага головы
+	//РџРѕРґРіРѕС‚Р°РІР»РёРІР°РµРј РїРµСЂРµРјРµРЅРЅС‹Рµ РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ СЃР»РµРґСѓСЋС‰РµРіРѕ С€Р°РіР° РіРѕР»РѕРІС‹
 	Coordinates NextStep = Position[0];
-	//Получаем координаты следующего шага
+	//РџРѕР»СѓС‡Р°РµРј РєРѕРѕСЂРґРёРЅР°С‚С‹ СЃР»РµРґСѓСЋС‰РµРіРѕ С€Р°РіР°
 	switch (Dir)
 	{
 	case UP: NextStep.y++;
@@ -56,21 +56,21 @@ void DrawSnake()
 	case RIGHT: NextStep.x++;
 		break;
 	}
-	//Сбрасываем флаг 
+	//РЎР±СЂР°СЃС‹РІР°РµРј С„Р»Р°Рі 
 	DirChanged = false;
 
-	//Попали в стену? Гамовер!
+	//РџРѕРїР°Р»Рё РІ СЃС‚РµРЅСѓ? Р“Р°РјРѕРІРµСЂ!
 	if (NextStep.x == 0 || NextStep.x == COLUMNS - 1 || NextStep.y == 0 || NextStep.y == ROWS - 1) {
 		GameOver = true;
 	}
-	else { //Попали сами в себя? Гамовер!
+	else { //РџРѕРїР°Р»Рё СЃР°РјРё РІ СЃРµР±СЏ? Р“Р°РјРѕРІРµСЂ!
 		for (int i = 0; i < SnakeLength; i++)
 		{
 			if (NextStep == Position[i]) GameOver = true;
 		}
-		if (NextStep == foodXY) { // Попали в яблоко? Получай ускорение.
+		if (NextStep == foodXY) { // РџРѕРїР°Р»Рё РІ СЏР±Р»РѕРєРѕ? РџРѕР»СѓС‡Р°Р№ СѓСЃРєРѕСЂРµРЅРёРµ.
 			food = true;
-			FPS-=5;
+			FPS-=10;
 			SnakeLength++;
 			for (int i = SnakeLength; i > 0; i--)
 			{
@@ -86,7 +86,7 @@ void DrawSnake()
 			Position[0] = NextStep;
 		}
 	}
-	//Отрисовываем сформированный массив
+	//РћС‚СЂРёСЃРѕРІС‹РІР°РµРј СЃС„РѕСЂРјРёСЂРѕРІР°РЅРЅС‹Р№ РјР°СЃСЃРёРІ
 	for (int i = 0; i < SnakeLength; i++) {
 		if (i == 0) glColor3ub(255, 0, 255);
 		else {
@@ -151,7 +151,7 @@ void display_callback() {
 	DrawSnake();
 	glutSwapBuffers();
 	if (GameOver) {
-		//Спасибо мелкомягким за такие удобные форматы в месседжах, как LPCWSTR. 
+		//РЎРїР°СЃРёР±Рѕ РјРµР»РєРѕРјСЏРіРєРёРј Р·Р° С‚Р°РєРёРµ СѓРґРѕР±РЅС‹Рµ С„РѕСЂРјР°С‚С‹ РІ РјРµСЃСЃРµРґР¶Р°С…, РєР°Рє LPCWSTR. 
 		std::string stringBuf = std::to_string(SnakeLength-4);
 		std::wstring stemp = std::wstring(stringBuf.begin(), stringBuf.end());
 		LPCWSTR sw = stemp.c_str();
