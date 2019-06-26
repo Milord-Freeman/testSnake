@@ -3,6 +3,12 @@
 #include <vector>
 #include "cell.h"
 
+#define BLACK 0, 0, 0, 255
+#define GREY 128, 128, 128
+#define WHITE_GRAY 102, 102, 102
+#define BLUE 0, 255, 255
+#define PURPLE
+
 class field
 {
 public:

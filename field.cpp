@@ -67,9 +67,9 @@ field::~field()
 
 void field::drawField()
 {
-	glClearColor(0, 0, 0, 255); // Красим все в чорное;
+	glClearColor(BLACK); // Красим все в чорное;
 	glClear(GL_COLOR_BUFFER_BIT);
-	glColor3ub(128, 128, 128); // Выбираем серый цвет для линии;
+	glColor3ub(GREY); // Выбираем серый цвет для линии;
 	glLineWidth(1); // Задаем длину линии
 	glBegin(GL_LINES); // Включаем режим формирования линий
 	for (int x = 0; x < un_height; x++)
@@ -89,8 +89,28 @@ void field::drawField()
 		// Отрисовываем серым границы;
 		if (thisCell.isWall())
 		{
-			glColor3ub(102, 102, 102);
+			glColor3ub(WHITE_GRAY);
+			glRectd(thisCell.getX(), thisCell.getY(), thisCell.getX() + 1, thisCell.getY() + 1);
+		}
+		// А синим отрисовываем хавку;
+		if (thisCell.isFood())
+		{
+			glColor3ub(BLUE);
 			glRectd(thisCell.getX(), thisCell.getY(), thisCell.getX() + 1, thisCell.getY() + 1);
 		}
 	}
+}
+
+std::vector<cell*> field::get_freeSells()
+{
+	std::vector<cell*> buffer;
+	for (auto thisCell : field_cells)
+	{
+		// Формируем список указателей на свободные ячейки;
+		if (thisCell.isFree())
+		{
+			buffer.push_back(&thisCell);
+		}
+	}
+	return std::vector<cell*>();
 }
