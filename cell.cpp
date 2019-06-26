@@ -24,12 +24,12 @@ cell::cell(const int newX, const int newY)
 
 int cell::getX()
 {
-	return 0;
+	return x;
 }
 
 int cell::getY()
 {
-	return 0;
+	return y;
 }
 
 void cell::setX(const int newX)

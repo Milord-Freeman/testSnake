@@ -9,8 +9,8 @@
 #include "cell.h"
 
 
-#define COLUMNS 60 
-#define ROWS 40
+#define COLUMNS 30 
+#define ROWS 30
 #define SQUARE_AREA 10
 
 #define UP 101
@@ -36,11 +36,13 @@ Coordinates foodXY;
 int FPS = 100;
 bool GameOver = false;
 
+field myField(COLUMNS, ROWS, SQUARE_AREA);
+
 void display_callback();
 void reshape_callback(int w, int h);
 void timer_callback(int);
 void keyboard_callback(int key, int x, int y);
-void DrawGrid();
+//void DrawGrid();
 void DrawFood();
 void DrawSnake();
 void random(int& x, int& y);
