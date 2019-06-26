@@ -2,9 +2,10 @@
 
 field::field()
 {
-	un_height = 30;
-	un_width = 40;
-	un_areaSize = 10;
+	field::setHeight(30);
+	field::setWidth(30);
+	field::setAreaSize(10);
+
 	for (unsigned int i = 0; i < un_height; i++)
 	{
 		for (unsigned int j = 0; j < un_width; j++)
@@ -22,9 +23,10 @@ field::field()
 
 field::field(const unsigned int newHeight, const unsigned int newWidht)
 {
-	un_height = newHeight;
-	un_width = newWidht;
-	un_areaSize = 10;
+	field::setHeight(newHeight);
+	field::setWidth(newWidht);
+	field::setAreaSize(10);
+
 	for (unsigned int i = 0; i < un_height; i++)
 	{
 		for (unsigned int j = 0; j < un_width; j++)
@@ -42,9 +44,10 @@ field::field(const unsigned int newHeight, const unsigned int newWidht)
 
 field::field(const unsigned int newHeight, const unsigned int newWidht, const unsigned int newAreaSize)
 {
-	un_height = newHeight;
-	un_width = newWidht;
-	un_areaSize = newAreaSize;
+	field::setHeight(newHeight);
+	field::setWidth(newWidht);
+	field::setAreaSize(newAreaSize);
+
 	for (unsigned int i = 0; i < un_height; i++)
 	{
 		for (unsigned int j = 0; j < un_width; j++)
@@ -99,6 +102,48 @@ void field::drawField()
 			glRectd(thisCell.getX(), thisCell.getY(), thisCell.getX() + 1, thisCell.getY() + 1);
 		}
 	}
+}
+
+unsigned int field::getAreaSize()
+{
+	return un_areaSize;
+}
+
+unsigned int field::getHeight()
+{
+	return un_height;
+}
+
+unsigned int field::getWidth()
+{
+	return un_width;
+}
+
+void field::setHeight(unsigned int newHeight)
+{
+	un_height = newHeight;
+}
+
+void field::setWidth(unsigned int newWidth)
+{
+	un_width = newWidth;
+}
+
+void field::setAreaSize(unsigned int newAreaSize)
+{
+	un_areaSize = newAreaSize;
+}
+
+cell* field::getCellByXY(unsigned int findX, unsigned int findY)
+{
+	for (auto thisCell : field_cells)
+	{
+		if (thisCell.getX() == findX && thisCell.getY() == findY) {
+			return &thisCell;
+		}
+	}
+	// Если в списке нет ячеек с такими координатами, то просто пустой указатель возвращаем;
+	return nullptr;
 }
 
 std::vector<cell*> field::get_freeSells()

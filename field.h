@@ -17,6 +17,9 @@ public:
 	field(const unsigned int, const unsigned int, const unsigned int); // Создаем со всеми кастомными параметрами;
 	~field(); // Деструктор по умолчанию;
 	void drawField(); // Основная функция которая непосредственно отрисовывает поле;
+	unsigned int getHeight(), getWidth(), getAreaSize(); // Можно получать параметры поля;
+	void setHeight(unsigned int), setWidth(unsigned int), setAreaSize(unsigned int); // Можно ручками задавать;
+	cell* getCellByXY(unsigned int, unsigned int); // Найти ячейку по координатам;
 	std::vector<cell*> get_freeSells(); // Функция которая возращает список указателей свободных ячеек, нужна для генерации хавки на пустом месте;
 protected:
 	unsigned int un_height, un_width, un_areaSize; 
