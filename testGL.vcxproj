@@ -150,9 +150,13 @@
     <None Include="freeglut.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="cell.cpp" />
+    <ClCompile Include="field.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cell.h" />
+    <ClInclude Include="field.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -5,6 +5,8 @@
 //#include <vector>
 //#include <iostream>
 //#include <locale>
+#include "field.h"
+#include "cell.h"
 
 
 #define COLUMNS 60 
