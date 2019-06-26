@@ -10,6 +10,11 @@ field::field()
 		for (unsigned int j = 0; j < un_width; j++)
 		{
 			cell nextCell(i, j);
+			if (i == 0 || i == un_height-1 || j == 0 || j == un_width-1)
+			{
+				// Задаем граничные ячейки;
+				nextCell.setWall();
+			}
 			field_cells.push_back(nextCell);
 		}
 	}
@@ -25,6 +30,11 @@ field::field(const unsigned int newHeight, const unsigned int newWidht)
 		for (unsigned int j = 0; j < un_width; j++)
 		{
 			cell nextCell(i, j);
+			if (i == 0 || i == un_height - 1 || j == 0 || j == un_width - 1)
+			{
+				// Задаем граничные ячейки;
+				nextCell.setWall();
+			}
 			field_cells.push_back(nextCell);
 		}
 	}
@@ -40,6 +50,11 @@ field::field(const unsigned int newHeight, const unsigned int newWidht, const un
 		for (unsigned int j = 0; j < un_width; j++)
 		{
 			cell nextCell(i, j);
+			if (i == 0 || i == un_height - 1 || j == 0 || j == un_width - 1)
+			{
+				// Задаем граничные ячейки;
+				nextCell.setWall();
+			}
 			field_cells.push_back(nextCell);
 		}
 	}
@@ -48,4 +63,8 @@ field::field(const unsigned int newHeight, const unsigned int newWidht, const un
 field::~field()
 {
 	field_cells.clear();
+}
+
+void field::drawField()
+{
 }
