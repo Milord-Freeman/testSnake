@@ -157,5 +157,5 @@ std::vector<cell*> field::get_freeSells()
 			buffer.push_back(&thisCell);
 		}
 	}
-	return std::vector<cell*>();
+	return buffer;
 }

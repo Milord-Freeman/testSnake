@@ -30,15 +30,15 @@
 //	}
 //}
 
-void DrawFood()
-{
-	if (food) {
-		random(foodXY.x, foodXY.y);
-		food = false;
-	}
-	glColor3ub(0, 255, 255);
-	glRectf(foodXY.x, foodXY.y, foodXY.x + 1, foodXY.y + 1);
-}
+//void DrawFood()
+//{
+//	if (food) {
+//		random(foodXY.x, foodXY.y);
+//		food = false;
+//	}
+//	glColor3ub(0, 255, 255);
+//	glRectf(foodXY.x, foodXY.y, foodXY.x + 1, foodXY.y + 1);
+//}
 
 void DrawSnake()
 {
@@ -69,7 +69,7 @@ void DrawSnake()
 			if (NextStep == Position[i]) GameOver = true;
 		}
 		if (NextStep == foodXY) { // Попали в яблоко? Получай ускорение.
-			food = true;
+			//food = true;
 			FPS-=10;
 			SnakeLength++;
 			for (int i = SnakeLength; i > 0; i--)
@@ -96,13 +96,13 @@ void DrawSnake()
 	}
 }
 
-void random(int& x, int& y)
-{
-	int _maxX = COLUMNS - 2, _maxY = ROWS - 2, _min = 1;
-	srand(time(NULL));
-	x = _min + rand() % (_maxX - _min);
-	y = _min + rand() % (_maxY - _min);
-}
+//void random(int& x, int& y)
+//{
+//	int _maxX = COLUMNS - 2, _maxY = ROWS - 2, _min = 1;
+//	srand(time(NULL));
+//	x = _min + rand() % (_maxX - _min);
+//	y = _min + rand() % (_maxY - _min);
+//}
 
 void reshape_callback(int w, int h)
 {
@@ -148,7 +148,7 @@ void keyboard_callback(int key, int x, int y)
 void display_callback() {
 	//DrawGrid();
 	myField.drawField();
-	DrawFood();
+	//DrawFood();
 	DrawSnake();
 	glutSwapBuffers();
 	if (GameOver) {

@@ -7,6 +7,7 @@
 //#include <locale>
 #include "field.h"
 #include "cell.h"
+#include "food.h"
 
 
 #define COLUMNS 30 
@@ -31,18 +32,19 @@ bool DirChanged = false;
 Coordinates Position[COLUMNS * ROWS] = { {20,25}, {20,24}, {20,23}, {20,22} };
 int SnakeLength = 4;
 
-bool food = true;
+//bool food = true;
 Coordinates foodXY;
 int FPS = 100;
 bool GameOver = false;
 
 field myField(COLUMNS, ROWS, SQUARE_AREA);
+food myFood(myField.get_freeSells(), 1);
 
 void display_callback();
 void reshape_callback(int w, int h);
 void timer_callback(int);
 void keyboard_callback(int key, int x, int y);
 //void DrawGrid();
-void DrawFood();
+//void DrawFood();
 void DrawSnake();
-void random(int& x, int& y);
+//void random(int& x, int& y);

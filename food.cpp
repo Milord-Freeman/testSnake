@@ -6,7 +6,7 @@ food::food(std::vector<cell*> freeCells, int amountCells)
 	{
 		srand(time(NULL));
 		// ‘ормируем список случайных неповтор€ющихс€ €чеек и помещаем их в список с указател€ми на еду;
-		for (auto buffer : food::randomNumbersList(freeCells.size(), amountCells)) {
+		for (auto buffer : randomNumbersList(freeCells.size(), amountCells)) {
 			food_cells.push_back(freeCells[buffer]);
 		}
 		// » пробегаемс€ по всем €чейкам дела€ их непосредственно едой.
