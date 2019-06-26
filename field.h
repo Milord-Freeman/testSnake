@@ -25,7 +25,7 @@ protected:
 	unsigned int un_height, un_width, un_areaSize; 
 	// Высота и ширина поля, а так же размер ячейки (она квадратная, так что достаточно указать только сторону)
 	std::vector<cell> field_cells; // Собственно контейнер с ячейками;
-	std::vector<cell*> food_cells; // Контейнер с указателями на ячейки, являющиеся едой;
+	//std::vector<cell*> food_cells; // Контейнер с указателями на ячейки, являющиеся едой;
 
 private:
 
