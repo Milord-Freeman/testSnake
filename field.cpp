@@ -1,4 +1,4 @@
-#include "field.h"
+п»ї#include "field.h"
 
 field::field()
 {
@@ -12,7 +12,7 @@ field::field()
 			cell nextCell(i, j);
 			if (i == 0 || i == un_height-1 || j == 0 || j == un_width-1)
 			{
-				// Задаем граничные ячейки;
+				// Р—Р°РґР°РµРј РіСЂР°РЅРёС‡РЅС‹Рµ СЏС‡РµР№РєРё;
 				nextCell.setWall();
 			}
 			field_cells.push_back(nextCell);
@@ -32,7 +32,7 @@ field::field(const unsigned int newHeight, const unsigned int newWidht)
 			cell nextCell(i, j);
 			if (i == 0 || i == un_height - 1 || j == 0 || j == un_width - 1)
 			{
-				// Задаем граничные ячейки;
+				// Р—Р°РґР°РµРј РіСЂР°РЅРёС‡РЅС‹Рµ СЏС‡РµР№РєРё;
 				nextCell.setWall();
 			}
 			field_cells.push_back(nextCell);
@@ -52,7 +52,7 @@ field::field(const unsigned int newHeight, const unsigned int newWidht, const un
 			cell nextCell(i, j);
 			if (i == 0 || i == un_height - 1 || j == 0 || j == un_width - 1)
 			{
-				// Задаем граничные ячейки;
+				// Р—Р°РґР°РµРј РіСЂР°РЅРёС‡РЅС‹Рµ СЏС‡РµР№РєРё;
 				nextCell.setWall();
 			}
 			field_cells.push_back(nextCell);
