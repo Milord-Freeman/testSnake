@@ -84,23 +84,40 @@ field::field(const int newHeight, const int newWidht, const int newAreaSize, con
 				// Задаем граничные ячейки;
 				nextCell.setWall();
 			}
-			// Тестовая хавка на поле;
-			if (i == 5 && j == 10)
+			else
 			{
-				nextCell.setFood();
+				nextCell.setFree();
 			}
+			// Тестовая хавка на поле;
+			//if (i == 5 && j == 10)
+			//{
+			//	nextCell.setFood();
+			//}
 			field_cells.push_back(nextCell);
 		}
 	}
-	
+
+	//srand(time(NULL));
+	//bool isFinded = false;
+	//while (!isFinded)
+	//{
+	//	int randomNumber = rand() % (n_height*n_width);
+	//	if (field_cells[randomNumber].isFree())
+	//	{
+	//		isFinded = true;
+	//		field_cells[randomNumber].setFood();
+	//	}
+	//}
+
+
 	//Формируем список еды;
 	std::vector<cell*> freeCells = field::get_freeCells();
 	if (!freeCells.empty() && field::getAmountFood() < freeCells.size())
 	{
 		srand(time(NULL));
 		// Формируем список случайных неповторяющихся ячеек и помещаем их в список с указателями на еду;
-		for (auto buffer : randomNumbersList(freeCells.size(), field::getAmountFood())) {
-			food_cells.push_back(freeCells[buffer]);
+		for (auto nextNumber : randomNumbersList(freeCells.size(), field::getAmountFood())) {
+			food_cells.push_back(freeCells[nextNumber]);
 		}
 		// И пробегаемся по всем ячейкам делая их непосредственно едой.
 		for (auto thisCell : food_cells)

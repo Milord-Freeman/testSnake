@@ -1,45 +1,5 @@
 ﻿#include "main.h"
 
-//void DrawGrid() {
-//	glClearColor(0, 0, 0, 255);
-//	glClear(GL_COLOR_BUFFER_BIT);
-//	glColor3ub(128, 128, 128);
-//	glLineWidth(1);
-//	glBegin(GL_LINES);
-//	for (int x = 0; x < COLUMNS; x++)
-//	{
-//		for (int y = 0; y < ROWS; y++)
-//		{
-//			glVertex2f(x, y);
-//			glVertex2f(x, y + 1);
-//			glVertex2f(x, y);
-//			glVertex2f(x + 1, y);
-//		}
-//	}
-//	glEnd();
-//	for (int x = 0; x < COLUMNS; x++)
-//	{
-//		for (int y = 0; y < ROWS; y++)
-//		{
-//			if (x == 0 || x == COLUMNS - 1 || y == 0 || y == ROWS - 1)
-//			{
-//				glColor3ub(102, 102, 102);
-//				glRectd(x, y, x + 1, y + 1);
-//			}
-//		}
-//	}
-//}
-
-//void DrawFood()
-//{
-//	if (food) {
-//		random(foodXY.x, foodXY.y);
-//		food = false;
-//	}
-//	glColor3ub(0, 255, 255);
-//	glRectf(foodXY.x, foodXY.y, foodXY.x + 1, foodXY.y + 1);
-//}
-
 void DrawSnake()
 {
 	//Подготавливаем переменные для определения следующего шага головы
@@ -96,14 +56,6 @@ void DrawSnake()
 	}
 }
 
-//void random(int& x, int& y)
-//{
-//	int _maxX = COLUMNS - 2, _maxY = ROWS - 2, _min = 1;
-//	srand(time(NULL));
-//	x = _min + rand() % (_maxX - _min);
-//	y = _min + rand() % (_maxY - _min);
-//}
-
 void reshape_callback(int w, int h)
 {
 	glViewport(0, 0, w, h);
@@ -146,7 +98,6 @@ void keyboard_callback(int key, int x, int y)
 }
 
 void display_callback() {
-	//DrawGrid();
 	myField.drawField();
 	//DrawFood();
 	DrawSnake();
