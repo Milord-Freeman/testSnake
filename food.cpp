@@ -1,15 +1,15 @@
-#include "food.h"
+ï»¿#include "food.h"
 
 food::food(std::vector<cell*> freeCells, int amountCells)
 {
 	if (!freeCells.empty() && amountCells < freeCells.size())
 	{
 		srand(time(NULL));
-		// Ôîðìèðóåì ñïèñîê ñëó÷àéíûõ íåïîâòîðÿþùèõñÿ ÿ÷ååê è ïîìåùàåì èõ â ñïèñîê ñ óêàçàòåëÿìè íà åäó;
+		// Ð¤Ð¾Ñ€Ð¼Ð¸Ñ€ÑƒÐµÐ¼ ÑÐ¿Ð¸ÑÐ¾Ðº ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹Ñ… Ð½ÐµÐ¿Ð¾Ð²Ñ‚Ð¾Ñ€ÑÑŽÑ‰Ð¸Ñ…ÑÑ ÑÑ‡ÐµÐµÐº Ð¸ Ð¿Ð¾Ð¼ÐµÑ‰Ð°ÐµÐ¼ Ð¸Ñ… Ð² ÑÐ¿Ð¸ÑÐ¾Ðº Ñ ÑƒÐºÐ°Ð·Ð°Ñ‚ÐµÐ»ÑÐ¼Ð¸ Ð½Ð° ÐµÐ´Ñƒ;
 		for (auto buffer : randomNumbersList(freeCells.size(), amountCells)) {
 			food_cells.push_back(freeCells[buffer]);
 		}
-		// È ïðîáåãàåìñÿ ïî âñåì ÿ÷åéêàì äåëàÿ èõ íåïîñðåäñòâåííî åäîé.
+		// Ð˜ Ð¿Ñ€Ð¾Ð±ÐµÐ³Ð°ÐµÐ¼ÑÑ Ð¿Ð¾ Ð²ÑÐµÐ¼ ÑÑ‡ÐµÐ¹ÐºÐ°Ð¼ Ð´ÐµÐ»Ð°Ñ Ð¸Ñ… Ð½ÐµÐ¿Ð¾ÑÑ€ÐµÐ´ÑÑ‚Ð²ÐµÐ½Ð½Ð¾ ÐµÐ´Ð¾Ð¹.
 		for (auto thisCell : food_cells)
 		{
 			thisCell->setFood();

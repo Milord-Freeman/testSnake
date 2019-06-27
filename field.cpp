@@ -5,13 +5,14 @@ field::field()
 	field::setHeight(30);
 	field::setWidth(30);
 	field::setAreaSize(10);
+	field::setAmountFood(1);
 
-	for (unsigned int i = 0; i < un_height; i++)
+	for (int i = 0; i < n_height; i++)
 	{
-		for (unsigned int j = 0; j < un_width; j++)
+		for (int j = 0; j < n_width; j++)
 		{
 			cell nextCell(i, j);
-			if (i == 0 || i == un_height - 1 || j == 0 || j == un_width - 1)
+			if (i == 0 || i == n_height - 1 || j == 0 || j == n_width - 1)
 			{
 				// Задаем граничные ячейки;
 				nextCell.setWall();
@@ -21,18 +22,19 @@ field::field()
 	}
 }
 
-field::field(const unsigned int newHeight, const unsigned int newWidht)
+field::field(const  int newHeight, const  int newWidht)
 {
 	field::setHeight(newHeight);
 	field::setWidth(newWidht);
 	field::setAreaSize(10);
+	field::setAmountFood(1);
 
-	for (unsigned int i = 0; i < un_height; i++)
+	for (int i = 0; i < n_height; i++)
 	{
-		for (unsigned int j = 0; j < un_width; j++)
+		for (int j = 0; j < n_width; j++)
 		{
 			cell nextCell(i, j);
-			if (i == 0 || i == un_height - 1 || j == 0 || j == un_width - 1)
+			if (i == 0 || i == n_height - 1 || j == 0 || j == n_width - 1)
 			{
 				// Задаем граничные ячейки;
 				nextCell.setWall();
@@ -42,23 +44,68 @@ field::field(const unsigned int newHeight, const unsigned int newWidht)
 	}
 }
 
-field::field(const unsigned int newHeight, const unsigned int newWidht, const unsigned int newAreaSize)
+field::field(const  int newHeight, const  int newWidht, const  int newAreaSize)
 {
 	field::setHeight(newHeight);
 	field::setWidth(newWidht);
 	field::setAreaSize(newAreaSize);
+	field::setAmountFood(1);
 
-	for (unsigned int i = 0; i < un_height; i++)
+	for (int i = 0; i < n_height; i++)
 	{
-		for (unsigned int j = 0; j < un_width; j++)
+		for (int j = 0; j < n_width; j++)
 		{
 			cell nextCell(i, j);
-			if ((i == 0) || (i == (un_height - 1)) || (j == 0) || (j == (un_width - 1)))
+			if ((i == 0) || (i == (n_height - 1)) || (j == 0) || (j == (n_width - 1)))
 			{
 				// Задаем граничные ячейки;
 				nextCell.setWall();
 			}
 			field_cells.push_back(nextCell);
+		}
+	}
+}
+
+field::field(const int newHeight, const int newWidht, const int newAreaSize, const int newAmountFood)
+{
+	field::setHeight(newHeight);
+	field::setWidth(newWidht);
+	field::setAreaSize(newAreaSize);
+	field::setAmountFood(newAmountFood);
+
+	// Заполняем поле;
+	for (int i = 0; i < n_height; i++)
+	{
+		for (int j = 0; j < n_width; j++)
+		{
+			cell nextCell(i, j);
+			if ((i == 0) || (i == (n_height - 1)) || (j == 0) || (j == (n_width - 1)))
+			{
+				// Задаем граничные ячейки;
+				nextCell.setWall();
+			}
+			// Тестовая хавка на поле;
+			if (i == 5 && j == 10)
+			{
+				nextCell.setFood();
+			}
+			field_cells.push_back(nextCell);
+		}
+	}
+	
+	//Формируем список еды;
+	std::vector<cell*> freeCells = field::get_freeCells();
+	if (!freeCells.empty() && field::getAmountFood() < freeCells.size())
+	{
+		srand(time(NULL));
+		// Формируем список случайных неповторяющихся ячеек и помещаем их в список с указателями на еду;
+		for (auto buffer : randomNumbersList(freeCells.size(), field::getAmountFood())) {
+			food_cells.push_back(freeCells[buffer]);
+		}
+		// И пробегаемся по всем ячейкам делая их непосредственно едой.
+		for (auto thisCell : food_cells)
+		{
+			thisCell->setFood();
 		}
 	}
 }
@@ -75,9 +122,9 @@ void field::drawField()
 	glColor3ub(GREY); // Выбираем серый цвет для линии;
 	glLineWidth(1); // Задаем длину линии
 	glBegin(GL_LINES); // Включаем режим формирования линий
-	for (int x = 0; x < un_height; x++)
+	for (int x = 0; x < n_height; x++)
 	{
-		for (int y = 0; y < un_width; y++)
+		for (int y = 0; y < n_width; y++)
 		{
 			glVertex2f(x, y);
 			glVertex2f(x, y + 1);
@@ -104,37 +151,47 @@ void field::drawField()
 	}
 }
 
-unsigned int field::getAreaSize()
+int field::getAreaSize()
 {
-	return un_areaSize;
+	return n_areaSize;
 }
 
-unsigned int field::getHeight()
+int field::getHeight()
 {
-	return un_height;
+	return n_height;
 }
 
-unsigned int field::getWidth()
+int field::getWidth()
 {
-	return un_width;
+	return n_width;
 }
 
-void field::setHeight(unsigned int newHeight)
+int field::getAmountFood()
 {
-	un_height = newHeight;
+	return n_amountFood;
 }
 
-void field::setWidth(unsigned int newWidth)
+void field::setHeight(int newHeight)
 {
-	un_width = newWidth;
+	n_height = newHeight;
 }
 
-void field::setAreaSize(unsigned int newAreaSize)
+void field::setWidth(int newWidth)
 {
-	un_areaSize = newAreaSize;
+	n_width = newWidth;
 }
 
-cell* field::getCellByXY(unsigned int findX, unsigned int findY)
+void field::setAreaSize(int newAreaSize)
+{
+	n_areaSize = newAreaSize;
+}
+
+void field::setAmountFood(int newAmountFood)
+{
+	n_amountFood = newAmountFood;
+}
+
+cell* field::getCellByXY(int findX, int findY)
 {
 	for (auto thisCell : field_cells)
 	{
@@ -146,7 +203,7 @@ cell* field::getCellByXY(unsigned int findX, unsigned int findY)
 	return nullptr;
 }
 
-std::vector<cell*> field::get_freeSells()
+std::vector<cell*> field::get_freeCells()
 {
 	std::vector<cell*> buffer;
 	for (auto thisCell : field_cells)
@@ -159,3 +216,42 @@ std::vector<cell*> field::get_freeSells()
 	}
 	return buffer;
 }
+
+std::vector<int> field::randomNumbersList(int range, int amount)
+{
+	std::vector<int> bufferList;
+	if (amount < range)
+	{
+		bool isAllGenerated = false;
+		srand(time(NULL));
+		while (!isAllGenerated)
+		{
+			bool isGeneratedYet = false;
+			int bufferValue = rand() % range;
+			for (auto thisValue : bufferList)
+			{
+				if (thisValue == bufferValue)
+				{
+					isGeneratedYet = true;
+				}
+			}
+			if (!isGeneratedYet)
+			{
+				bufferList.push_back(bufferValue);
+				if (bufferList.size() == amount)
+				{
+					isAllGenerated = true;
+				}
+			}
+		}
+	}
+	else
+	{
+		for (int i = 0; i < range; i++)
+		{
+			bufferList.push_back(i);
+		}
+	}
+	return bufferList;
+}
+

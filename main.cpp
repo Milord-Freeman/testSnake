@@ -153,9 +153,8 @@ void display_callback() {
 	glutSwapBuffers();
 	if (GameOver) {
 		//Спасибо мелкомягким за такие удобные форматы в месседжах, как LPCWSTR. 
-		std::string stringBuf = std::to_string(SnakeLength-4);
-		std::wstring stemp = std::wstring(stringBuf.begin(), stringBuf.end());
-		LPCWSTR sw = stemp.c_str();
+		std::wstring bufWstring = std::to_wstring(SnakeLength - 4);
+		LPCWSTR sw = bufWstring.c_str();
 		MessageBox(NULL, sw, L"You loose, sorry. Score is", 0);
 		exit(0);
 	}

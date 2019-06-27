@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include "FreeGLUT\include\GL\glut.h"
 #include <vector>
+#include <stdlib.h>
+#include <time.h>
 #include "cell.h"
 
 #define BLACK 0, 0, 0, 255
@@ -13,19 +15,37 @@ class field
 {
 public:
 	field(); // Конструктор по умолчанию;
-	field(const unsigned int, const unsigned int); // Создаем с кастомными шириной и высотой, площадь клетки по умолчанию;
-	field(const unsigned int, const unsigned int, const unsigned int); // Создаем со всеми кастомными параметрами;
+	field(const  int, const  int); // Создаем с кастомными шириной и высотой, площадь клетки по умолчанию;
+	field(const  int, const  int, const  int); // Ширина высота площадь задаются, количество хавки по умолчанию;
+	field(const  int, const  int, const  int, const  int); // Создаем со всеми кастомными параметрами;
 	~field(); // Деструктор по умолчанию;
-	void drawField(); // Основная функция которая непосредственно отрисовывает поле;
-	unsigned int getHeight(), getWidth(), getAreaSize(); // Можно получать параметры поля;
-	void setHeight(unsigned int), setWidth(unsigned int), setAreaSize(unsigned int); // Можно ручками задавать;
-	cell* getCellByXY(unsigned int, unsigned int); // Найти ячейку по координатам;
-	std::vector<cell*> get_freeSells(); // Функция которая возращает список указателей свободных ячеек, нужна для генерации хавки на пустом месте;
+	
+	void				drawField(); // Основная функция которая непосредственно отрисовывает поле;
+						// Можно получать параметры поля;
+	int					getHeight(), 
+						getWidth(), 
+						getAreaSize(), 
+						getAmountFood(); 
+						// Можно ручками задавать;
+	void				setHeight(int),	
+						setWidth(int), 
+						setAreaSize(int), 
+						setAmountFood(int); 
+						// Найти ячейку по координатам;
+	cell*				getCellByXY(int, int); 
+						// Функция которая возращает список указателей свободных ячеек, нужна для генерации хавки на пустом месте;
+	std::vector<cell*>  get_freeCells();
+
 protected:
-	unsigned int un_height, un_width, un_areaSize; 
-	// Высота и ширина поля, а так же размер ячейки (она квадратная, так что достаточно указать только сторону)
-	std::vector<cell> field_cells; // Собственно контейнер с ячейками;
-	//std::vector<cell*> food_cells; // Контейнер с указателями на ячейки, являющиеся едой;
+	int					n_height,		// Высота;
+						n_width,		// Ширина;
+						n_areaSize,		// Размер стороны квадратной ячейки;
+						n_amountFood;	// Число генерируемой еды на поле;
+	
+	std::vector<cell>	field_cells;	// Собственно контейнер с ячейками;
+	std::vector<cell*>  food_cells;		// Контейнер с указателями на ячейки, являющиеся едой;
+						// Специальная версия рандома, выдает случайную неповторяющуюся последовательность;
+	std::vector<int>	randomNumbersList(int, int); 
 
 private:
 
