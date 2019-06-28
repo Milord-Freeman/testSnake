@@ -154,12 +154,14 @@
     <ClCompile Include="field.cpp" />
     <ClCompile Include="food.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="snake.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cell.h" />
     <ClInclude Include="field.h" />
     <ClInclude Include="food.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="snake.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -52,3 +52,10 @@ std::vector<int> food::randomNumbersList(int range, int amount)
 	}
 	return bufferList;
 }
+
+cell* food::newPosition(std::vector<cell*> freeCells, cell* oldCell)
+{
+	oldCell->setFree();
+	freeCells[rand() % freeCells.size()]->setFood();
+}
+
