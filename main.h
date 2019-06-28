@@ -13,7 +13,7 @@
 #define COLUMNS 30 
 #define ROWS 30
 #define SQUARE_AREA 10
-#define FOOD 3
+#define FOOD 10
 
 #define UP 101
 #define DOWN 103

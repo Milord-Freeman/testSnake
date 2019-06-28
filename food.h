@@ -15,7 +15,7 @@ public:
 protected:
 	std::vector<cell*>			food_cells; //  онтейнер с указател€ми на €чейки, €вл€ющиес€ едой;
 	std::vector<int>			randomNumbersList(int, int); // —пециальна€ верси€ рандома, выдает случайную неповтор€ющуюс€ последовательность;
-	//cell*						newPosition(cell*); // —мен€ем позицию на свободную;
+	cell*						newPosition(cell*); // —мен€ем позицию на свободную;
 
 private:
 };

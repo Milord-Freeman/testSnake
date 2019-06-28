@@ -3,8 +3,7 @@
 food::food(std::vector<cell*> freeCells, int amountCells)
 {
 	if (!freeCells.empty() && amountCells < freeCells.size())
-	{
-
+	{	
 		// Формируем список случайных неповторяющихся ячеек и помещаем их в список с указателями на еду;
 		for (auto& buffer : randomNumbersList(freeCells.size(), amountCells)) {
 			food_cells.push_back(freeCells[buffer]);
