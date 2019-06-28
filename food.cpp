@@ -4,13 +4,13 @@ food::food(std::vector<cell*> freeCells, int amountCells)
 {
 	if (!freeCells.empty() && amountCells < freeCells.size())
 	{
-		srand(time(NULL));
+
 		// Формируем список случайных неповторяющихся ячеек и помещаем их в список с указателями на еду;
-		for (auto buffer : randomNumbersList(freeCells.size(), amountCells)) {
+		for (auto& buffer : randomNumbersList(freeCells.size(), amountCells)) {
 			food_cells.push_back(freeCells[buffer]);
 		}
 		// И пробегаемся по всем ячейкам делая их непосредственно едой.
-		for (auto thisCell : food_cells)
+		for (auto& thisCell : food_cells)
 		{
 			thisCell->setFood();
 		}
@@ -23,7 +23,6 @@ std::vector<int> food::randomNumbersList(int range, int amount)
 	if (amount < range)
 	{
 		bool isAllGenerated = false;
-		srand(time(NULL));
 		while (!isAllGenerated)
 		{
 			bool isGeneratedYet = false;

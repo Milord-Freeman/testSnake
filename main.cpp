@@ -113,6 +113,7 @@ void display_callback() {
 
 int main(int argc, char** argv)
 {
+	srand(time(NULL));
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE);
 	glutInitWindowPosition(100, 100);

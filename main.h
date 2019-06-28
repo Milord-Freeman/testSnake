@@ -7,13 +7,13 @@
 //#include <locale>
 #include "field.h"
 #include "cell.h"
-//#include "food.h"
+#include "food.h"
 
 
 #define COLUMNS 30 
 #define ROWS 30
 #define SQUARE_AREA 10
-#define FOOD 1
+#define FOOD 3
 
 #define UP 101
 #define DOWN 103
@@ -39,8 +39,7 @@ int			FPS = 100;
 bool		GameOver = false;
 
 field		myField(COLUMNS, ROWS, SQUARE_AREA, FOOD);
-
-//food myFood(myField.get_freeSells(), 1);
+food		myFood(myField.get_freeCells(), myField.getAmountFood());
 
 void display_callback();
 void reshape_callback(int w, int h);

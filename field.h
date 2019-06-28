@@ -43,9 +43,10 @@ protected:
 						n_amountFood;	// Число генерируемой еды на поле;
 	
 	std::vector<cell>	field_cells;	// Собственно контейнер с ячейками;
-	std::vector<cell*>  food_cells;		// Контейнер с указателями на ячейки, являющиеся едой;
+
+	//std::vector<cell*>  food_cells;		// Контейнер с указателями на ячейки, являющиеся едой;
 						// Специальная версия рандома, выдает случайную неповторяющуюся последовательность;
-	std::vector<int>	randomNumbersList(int, int); 
+	//std::vector<int>	randomNumbersList(int, int); 
 
 private:
 
