@@ -1,3 +1,3 @@
 h1 TEST
-![logo](/logo_snake.png)
+![logo](https://github.com/Milord-Freeman/testSnake/blob/master/logo_snake.jpg)
 >Welcome to wonderland!
