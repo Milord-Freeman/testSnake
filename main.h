@@ -12,7 +12,8 @@
 #define COLUMNS 30 
 #define ROWS 30
 #define SQUARE_AREA 10
-#define FOOD 10
+#define FOOD 3
+#define LENGTH 4
 
 #define UP 101
 #define DOWN 103
@@ -42,7 +43,7 @@ bool		GameOver = false;
 
 // Спасибо богам рефакторинга, вот тут вся магия и происходит.
 field		myField(COLUMNS, ROWS, SQUARE_AREA, FOOD);
-snake		mySnake();
+snake		mySnake(myField.get_freeCells(), LENGTH); // Не дописан нормально;
 food		myFood(myField.get_freeCells(), myField.getAmountFood());
 
 // Функции для ввода и вывода данных;

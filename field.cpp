@@ -88,6 +88,8 @@ field::field(const int newHeight, const int newWidht, const int newAreaSize, con
 			{
 				nextCell.setFree();
 			}
+
+			nextCell.index = field_cells.size() - 1;
 			field_cells.push_back(nextCell);
 		}
 	}
@@ -202,3 +204,15 @@ std::vector<cell*> field::get_freeCells()
 }
 
 
+
+
+for (auto& pFood : m_vFoodCells)
+
+{
+	if (pFood.coords = snake_head->coords)
+	{
+		//do stuff
+		pFood.recalc_coords(field.getUnusedCell());
+	}
+
+}
